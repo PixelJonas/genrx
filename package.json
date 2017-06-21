@@ -20,7 +20,7 @@
     "test": "npm run build && rimraf ./tests/src/dist && cp -r ./dist ./tests/src/dist && cd tests && ng test --single-run",
     "build:aot": "ngc -p tsconfig.json",
     "build:jit": "tsc -p tsconfig.json",
-    "build": "npm run clean && npm run build:aot && cd tests && ng build",
+    "build": "npm run clean && npm run build:aot",
     "demo": "npm run clean && cd tests && ng build --prod --base-href \"/demo/\""
   },
   "types": "dist/index.d.ts",
