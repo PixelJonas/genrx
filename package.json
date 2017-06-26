@@ -14,14 +14,17 @@
   "homepage": "https://github.com/PixelJonas/genrx",
   "bugs": "https://github.com/PixelJonas/genrx/issues",
   "description": "a collection of generic implementations for @ngrx/store and @ngrx/effects",
-  "main": "dist/index.js",
+  "main": "dist/genrx.umd.js",
+  "module": "dist/genrx.esm.js",
+  "jsnext:main": "dist/genrx.esm.js",
   "scripts": {
-    "clean": "rimraf dist/",
-    "test": "npm run build && rimraf ./tests/src/dist && cp -r ./dist ./tests/src/dist && cd tests && ng test --single-run",
-    "build:aot": "ngc -p tsconfig.json",
-    "build:jit": "tsc -p tsconfig.json",
-    "build": "npm run clean && npm run build:aot",
-    "demo": "npm run clean && cd tests && ng build --prod --base-href \"/demo/\""
+    "copy": "node tools/copy-package.js && node tools/cleanup.js",
+    "bundle": "rimraf dist && rollup -c rollup.config.umd.js && rollup -c rollup.config.esm.js && tsc",
+    "postbundle": "node tools/remove-code.js",
+    "build": "npm run bundle && npm run copy",
+    "push": "git push --tags origin HEAD:master",
+    "release": "npm version minor && npm run build",
+    "snapshot": "npm version patch && npm run build"
   },
   "types": "dist/index.d.ts",
   "private": false,
@@ -47,6 +50,12 @@
     "@angular/platform-server": "^4.1.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "6.0.60",
-    "rimraf": "^2.5.4"
+    "del": "^3.0.0",
+    "node-sass": "^4.5.3",
+    "rimraf": "^2.5.4",
+    "rollup-plugin-angular": "^0.4.4",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-typescript": "^0.8.1"
   }
 }

@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import {Injectable} from '@angular/core';
+import {Actions, Effect, toPayload} from '@ngrx/effects';
 
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import { GenericListActions } from './GenericListActions';
-import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import {GenericListService} from "./GenericListService";
-import {GenericListConfig} from "./GenericListConfig";
+import {GenericListActions} from './GenericListActions';
+import {Action} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {GenericListService} from './GenericListService';
+import {GenericListConfig} from './GenericListConfig';
 
 @Injectable()
 export abstract class GenericListEffect<T> {

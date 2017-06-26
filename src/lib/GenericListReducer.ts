@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import {GenericListConfig} from "./GenericListConfig";
 
 

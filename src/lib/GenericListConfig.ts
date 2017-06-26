@@ -13,3 +13,6 @@ export interface GenericListConfig {
   DELETE_ITEM: string;
   DELETE_ITEM_SUCCESS: string;
 }
+
+export class GenericListConfig {
+}
